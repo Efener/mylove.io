@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Birlikte Anılarımız 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #ffe6e6, #ffd6d6);
+      color: #5c1a1b;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    /* Timeline */
+    .timeline {
+  position: sticky;
+  top: 100px; 
+  height: calc(100vh - 150px); /* Alt/üst boşluklar için */
+  overflow-y: auto; /* İç scroll için */
+  padding-right: 15px; /* Scroll çubuğu için boşluk */
+}
+
+    .timeline ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .timeline li {
+      margin: 50px 0;
+      font-size: 1em;
+      font-weight: 400;
+      color: #c94c74;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .timeline li.active {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: #ff3366;
+    }
+
+    /* Gallery */
+    .gallery {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .memory-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(255, 182, 193, 0.5);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .memory-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .memory-card img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 1.2em;
+      margin-top: 100px;
+    }
+
+    /* Audio Player */
+    .audio-player {
+      position: fixed;
+      display: none;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 182, 193, 0.7);
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    audio {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+    }
+
+    /* Heart Animation */
+    .heart {
+    position: fixed;
+    width: 18px;
+    height: 18px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: floatUp 5s linear infinite;
+    opacity: 0.7;
+    z-index: 9999;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: pink;
+    border-radius: 50%;
+  }
+
+  .heart::before {
+    top: -9px;
+    left: 0;
+  }
+
+  .heart::after {
+    left: -9px;
+    top: 0;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) rotate(45deg) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(-800px) rotate(45deg) scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  </style>
+</head>
+<body>
+
+<header>
+    Birlikte Geçen Güzel Anılarımız 💖
+</header>
+
+<div class="container">
+  <!-- Timeline -->
+  <div class="timeline">
+    <ul id="timeline-list">
+      <li data-target="ani-1">İlk Buluşmamız</li>
+      <li data-target="ani-2">365 Gün Önce Bugün</li>
+      <li data-target="ani-3">Mutluluğun Resmi</li>
+      <li data-target="ani-4">Dünyaların Benim Olduğu An</li>
+      <li data-target="ani-5">Tatlı Bir Sahil Yürüyüşü</li>
+      <li data-target="ani-7">Bulduğum Yerde Bırakmıyorum</li>
+      <li data-target="ani-8">Dünyalar Güzeli Sevgilimden Öpücük</li>
+      <li data-target="ani-9">Ders Çalışma Günümüz</li>
+      <li data-target="ani-10">Aşkım ve renkli gömleğim</li>
+      <li data-target="ani-12">İlk Konserimiz</li>
+      <li data-target="ani-13">Forum Bornova Hatırası</li>
+      <li data-target="ani-15">Kova Şapka</li>
+      <li data-target="ani-16">Güzel Bir Geceden Kalan Esintiler</li>
+      <li data-target="ani-17">En Anlamlı Doğum Günüm</li>
+      <li data-target="ani-18">İlk Sinema Günümüz</li>
+      <li data-target="ani-20">Hayvanat Bahçesinde İki Kaşif</li>
+      <li data-target="ani-21">Ders Çıkışı Ziyareti</li>
+      <li data-target="ani-22">Foça Gezintisi</li>
+      <li data-target="ani-24">Foça</li>
+      <li data-target="ani-25">Çimenlik Kalesi</li>
+      <li data-target="ani-26">İlk Tatilimiz</li>
+      <li data-target="ani-27">Güzelim ile baş başa</li>
+      <li data-target="ani-28">Huzur dolu bir an</li>
+      <li data-target="ani-29">Çanakkale Boğazına Bakış</li>
+      <li data-target="ani-30">Aynalı Çarşı</li>
+      <li data-target="ani-31">Gülüşüne Bittiğim Kadın</li>
+      <li data-target="ani-32">Tatlı Bir Çift</li>
+      <li data-target="ani-34">Çanakkale'nin Bir Ucunda</li>
+      <li data-target="ani-36">Balım ve Mutluluktan Uçan Kalbi</li>
+      <li data-target="ani-37">Beyazlar Arasında</li>
+      <li data-target="ani-38">Bornova</li>
+      <li data-target="ani-39">Bir Antrenman Dönüşü</li>
+      <li data-target="ani-40">Bugs-Lola Bunny</li>
+      <li data-target="ani-41">Çiçeğime bir Buket</li>
+      <li data-target="ani-42">Tatlı bi gizli çekim</li>
+      <li data-target="ani-43">İyi ki doğmuş Sevgilim</li>
+      <li data-target="ani-44">Çiçekçi Kıızz</li>
+      <li data-target="ani-45">İzmir Saat Kulesinde</li>
+      <li data-target="ani-46">Yook uyumom</li>
+      <li data-target="ani-47">Arabalı Maceralar</li>
+      <li data-target="ani-48">Yeniyoruum</li>
+      <li data-target="ani-49">Beyazlar Arasında</li>
+      <li data-target="ani-50">Yılbaşı Güzeli</li>
+      <li data-target="ani-51">Bursa Gezimiz</li>
+      <li data-target="ani-52">Öpmeye Doyamadığım</li>
+      <li data-target="ani-53">Karların Arasında</li>
+      <li data-target="ani-54">Ayvalık Sokakları</li>
+      <li data-target="ani-55">Aynalar</li>
+      <li data-target="ani-56">İlk Sevgililer Günümüz</li>
+      <li data-target="ani-57">Uyuyan Güzel</li>
+      <li data-target="ani-58">Aşkım İle Araba Maceraları</li>
+      <li data-target="ani-60">Gözlerin Çok Güzel</li>
+      <li data-target="ani-59">Birazdan Bir Yerlerde Olmamız Gerekiyormuş</li>
+      <li data-target="ani-61">Canım Sevgilim</li>
+      <li data-target="ani-62">Papatya Güzeli</li>
+      <li data-target="ani-63">Yolcumuzu Karşılama</li>
+    </ul>
+    
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <section class="memory-card" id="ani-1">
+      <h2>İlk Buluşmamız</h2>
+      <p>O günü hatırlıyor musun? ❤️</p>
+      <img src="fotograflar/1.jpeg" alt="İlk Buluşma">
+    </section>
+
+    <section class="memory-card" id="ani-2">
+      <h2>365 Gün Önce Bugün</h2>
+      <p>Birlikteliğimizin Başlangıcı</p>
+      <img src="fotograflar/2-2.jpeg" alt="İlk Tatil">
+    </section>
+
+    <section class="memory-card" id="ani-3">
+      <h2>Mutluluğun Resmi</h2>
+      <p>Nasıl heyecanlı olduğumu hala unutamıyorum</p>
+      <img src="fotograflar/3.jpeg" alt="Yıl Dönümü">
+    </section>
+
+    <section class="memory-card" id="ani-4">
+      <h2>Dünyaların Benim Olduğu An</h2>
+      <p></p>
+      <img src="fotograflar/6.jpeg" alt="Doğum Günü">
+    </section>
+
+    <section class="memory-card" id="ani-5">
+      <h2>Tatlı Bir Sahil Yürüyüşü</h2>
+      <p></p>
+      <img src="fotograflar/5.jpeg" alt="Mutlu Günler">
+    </section>
+    <!-- Additional Memory Cards -->
+    <section class="memory-card" id="ani-7">
+      <h2>Bulduğum Yerde Bırakmıyorum</h2>
+      <p>En küçük noktadan kocaman bir öpücük almak benim hakkım</p>
+      <img src="fotograflar/7.jpeg" alt="Anı 7">
+    </section>
+    <section class="memory-card" id="ani-8">
+      <h2>Dünyalar Güzeli Sevgilimden Öpücük</h2>
+      <p></p>
+      <img src="fotograflar/8.jpeg" alt="Anı 8">
+    </section>
+    <section class="memory-card" id="ani-9">
+      <h2>Ders Çalışma Günümüz</h2>
+      <p></p>
+      <img src="fotograflar/9.jpeg" alt="Anı 9">
+    </section>
+    <section class="memory-card" id="ani-10">
+      <h2>Aşkım ve renkli gömleğim </h2>
+      <p>Yürüyüşün ardından bizim bankımızda</p>
+      <img src="fotograflar/10.jpeg" alt="Anı 10">
+    </section>
+    <section class="memory-card" id="ani-12">
+      <h2>İlk Konserimiz</h2>
+      <p>Spot ışıklarının altında kampüsün ortasında</p>
+      <img src="fotograflar/12.jpeg" alt="Anı 12">
+    </section>
+    <section class="memory-card" id="ani-13">
+      <h2>Forum Bornova Hatırası</h2>
+      <p></p>
+      <img src="fotograflar/13.jpeg" alt="Anı 13">
+    </section>
+    <section class="memory-card" id="ani-15">
+      <h2>Kova Şapka</h2>
+      <p>Şapkalar da bebeğime ne güzel yakışır</p>
+      <img src="fotograflar/15.jpeg" alt="Anı 15">
+    </section>
+    <section class="memory-card" id="ani-16">
+      <h2>Güzel Bir Geceden Kalan Esintiler</h2>
+      <p></p>
+      <img src="fotograflar/16.jpeg" alt="Anı 16">
+    </section>
+    <section class="memory-card" id="ani-17">
+      <h2>En Anlamlı Doğum Günüm</h2>
+      <p>Düşünceli sevgilimin doğum günü sürprizi</p>
+      <img src="fotograflar/17.jpeg" alt="Anı 17">
+    </section>
+    <section class="memory-card" id="ani-18">
+      <h2>İlk Sinema Günümüz</h2>
+      <p></p>
+      <img src="fotograflar/18.jpeg" alt="Anı 18">
+    </section>
+    <section class="memory-card" id="ani-20">
+      <h2>Hayvanat Bahçesinde İki Kaşif</h2>
+      <p></p>
+      <img src="fotograflar/20.jpeg" alt="Anı 20">
+    </section>
+    <section class="memory-card" id="ani-21">
+      <h2>Ders Çıkışı Ziyareti</h2>
+      <p></p>
+      <img src="fotograflar/21.jpeg" alt="Anı 21">
+    </section>
+    <section class="memory-card" id="ani-22">
+      <h2>Foça Gezintisi</h2>
+      <p></p>
+      <img src="fotograflar/22.jpeg" alt="Anı 22">
+    </section>
+    <section class="memory-card" id="ani-24">
+      <h2>Foça</h2>
+      <p></p>
+      <img src="fotograflar/24.jpeg" alt="Anı 24">
+    </section>
+    <section class="memory-card" id="ani-25">
+      <h2>Çimenlik Kalesi</h2>
+      <p></p>
+      <img src="fotograflar/25.jpeg" alt="Anı 25">
+    </section>
+    <section class="memory-card" id="ani-26">
+      <h2>İlk Tatilimiz</h2>
+      <p>Deniz Kum Güneş</p>
+      <img src="fotograflar/26.jpeg" alt="Anı 26">
+    </section>
+    <section class="memory-card" id="ani-27">
+      <h2>Güzelim ile baş başa</h2>
+      <p></p>
+      <img src="fotograflar/27.jpeg" alt="Anı 27">
+    </section>
+    <section class="memory-card" id="ani-28">
+      <h2>Huzur dolu bir an</h2>
+      <p></p>
+      <img src="fotograflar/28.jpeg" alt="Anı 28">
+    </section>
+    <section class="memory-card" id="ani-29">
+      <h2>Çanakkale Boğazına Bakış</h2>
+      <p></p>
+      <img src="fotograflar/29.jpeg" alt="Anı 29">
+    </section>
+    <section class="memory-card" id="ani-30">
+      <h2>Aynalı Çarşı</h2>
+      <p>Çarşının en güzel kızı ile</p>
+      <img src="fotograflar/30.jpeg" alt="Anı 30">
+    </section>
+    <section class="memory-card" id="ani-31">
+      <h2>Gülüşüne Bittiğim Kadın</h2>
+      <p></p>
+      <img src="fotograflar/31.jpeg" alt="Anı 31">
+    </section>
+    <section class="memory-card" id="ani-32">
+      <h2>Tatlı Bir Çift</h2>
+      <p></p>
+      <img src="fotograflar/32.jpeg" alt="Anı 32">
+    </section>
+    <section class="memory-card" id="ani-34">
+      <h2>Çanakkale'nin Bir Ucunda</h2>
+      <p></p>
+      <img src="fotograflar/34.jpeg" alt="Anı 34">
+    </section>
+    <section class="memory-card" id="ani-36">
+      <h2>Balım ve Mutluluktan Uçan Kalbi</h2>
+      <p></p>
+      <img src="fotograflar/36.jpeg" alt="Anı 36">
+    </section>
+    <section class="memory-card" id="ani-37">
+      <h2>Beyazlar Arasında</h2>
+      <p>Tekrar beyazlarla görmek üzere </p>
+      <img src="fotograflar/37.jpeg" alt="Anı 37">
+    </section>
+    <section class="memory-card" id="ani-38">
+      <h2>Bornova</h2>
+      <p>T-shirti ters giydiğim gün (ne bileyim ben baskı önde olur sandım)</p>
+      <img src="fotograflar/38.jpeg" alt="Anı 38">
+    </section>
+    <section class="memory-card" id="ani-39">
+      <h2>Bir Antrenman Dönüşü</h2>
+      <p>Sonrasında Çorba İçmeye</p>
+      <img src="fotograflar/39.jpeg" alt="Anı 39">
+    </section>
+    <section class="memory-card" id="ani-40">
+      <h2>Bugs-Lola Bunny</h2>
+      <p>Kurnaz Tavşan</p>
+      <img src="fotograflar/40.jpeg" alt="Anı 40">
+    </section>
+    <section class="memory-card" id="ani-41">
+      <h2>Çiçeğime bir Buket</h2>
+      <p></p>
+      <img src="fotograflar/41.jpeg" alt="Anı 41">
+    </section>
+    <section class="memory-card" id="ani-42">
+      <h2>Tatlı bi gizli çekim</h2>
+      <p></p>
+      <img src="fotograflar/42.jpeg" alt="Anı 42">
+    </section>
+    <section class="memory-card" id="ani-43">
+      <h2>İyi ki doğmuş Sevgilim</h2>
+      <p>İyi ki benim olmuş</p>
+      <img src="fotograflar/43.jpeg" alt="Anı 43">
+    </section>
+    <section class="memory-card" id="ani-44">
+      <h2>Çiçekçi Kıızz</h2>
+      <p></p>
+      <img src="fotograflar/44.jpeg" alt="Anı 44">
+    </section>
+    <section class="memory-card" id="ani-45">
+      <h2>İzmir Saat Kulesinde</h2>
+      <p>İzmir'li olup bir tane fotoğrafımız olması </p>
+      <img src="fotograflar/45.jpeg" alt="Anı 45">
+    </section>
+    <section class="memory-card" id="ani-46">
+      <h2>Yook uyumom</h2>
+      <p>Dizi izlerken gözlerini dinlendiren(uyuyan) sevgilim </p>
+      <img src="fotograflar/46.jpeg" alt="Anı 46">
+    </section>
+    <section class="memory-card" id="ani-47">
+      <h2>Arabalı Maceralar</h2>
+      <p></p>
+      <img src="fotograflar/47.jpeg" alt="Anı 47">
+    </section>
+    <section class="memory-card" id="ani-48">
+      <h2>Yeniyoruum</h2>
+      <p>ve bu durumdan gayet memnunum</p>
+      <img src="fotograflar/48.jpeg" alt="Anı 48">
+    </section>
+    <section class="memory-card" id="ani-49">
+      <h2>Beyazlar Arasında</h2>
+      <p>Pembe bir Tavşan</p>
+      <img src="fotograflar/49.jpeg" alt="Anı 49">
+    </section>
+    <section class="memory-card" id="ani-50">
+      <h2>Yılbaşı Güzeli</h2>
+      <p></p>
+      <img src="fotograflar/50.jpeg" alt="Anı 50">
+    </section>
+    <section class="memory-card" id="ani-51">
+      <h2>Bursa Gezimiz</h2>
+      <p>Tur Arası Fotoğraf Molası</p>
+      <img src="fotograflar/51.jpeg" alt="Anı 51">
+    </section> 
+    <section class="memory-card" id="ani-52">
+      <h2>Öpmeye Doyamadığım</h2>
+      <p>Çok güzel napim</p>
+      <img src="fotograflar/52.jpeg" alt="Anı 52">
+    </section>  
+    <section class="memory-card" id="ani-53">
+      <h2>Karların Arasında</h2>
+      <p>Biraz önce dans etmemiş gibi</p>
+      <img src="fotograflar/53.jpeg" alt="Anı 53">
+    </section>  
+    <section class="memory-card" id="ani-54">
+      <h2>Ayvalık Sokakları</h2>
+      <p>Yılbaşı Neşesi</p>
+      <img src="fotograflar/54.jpeg" alt="Anı 54">
+    </section>
+    <section class="memory-card" id="ani-55">
+      <h2>Aynalar</h2>
+      <p>Bizi Seviyorlar</p>
+      <img src="fotograflar/55.jpeg" alt="Anı 55">
+    </section>
+    <section class="memory-card" id="ani-56">
+      <h2>İlk Sevgililer Günümüz</h2>
+      <p>Çok Şık Çok Güzel Unutulmaz Bir Akşam</p>
+      <img src="fotograflar/56.jpeg" alt="Anı 56">
+    </section>
+    <section class="memory-card" id="ani-57">
+      <h2>Uyuyan Güzel</h2>
+      <p>Mışıl mışıl uyuyan sevgilim (foturafı silmicem) </p>
+      <img src="fotograflar/57.jpeg" alt="Anı 57">
+    </section>
+    <section class="memory-card" id="ani-58">
+      <h2>Aşkım İle Araba Maceraları</h2>
+      <p>Usta Şoför Gülümsemesi İçimizi Güven Dolduruyor</p>
+      <img src="fotograflar/58.jpeg" alt="Anı 58">
+    </section>
+    <section class="memory-card" id="ani-60">
+      <h2>Gözlerin Çok Güzel</h2>
+      <p>Gözlerinin Güzelliğinde Kaybolmuşum</p>
+      <img src="fotograflar/60.jpeg" alt="Anı 60">
+    </section>
+    <section class="memory-card" id="ani-59">
+      <h2>Birazdan Bir Yerlerde Olmamız Gerekiyormuş</h2>
+      <p>Ama Önce Kahve</p>
+      <img src="fotograflar/59.jpeg" alt="Anı 59">
+    </section> 
+    <section class="memory-card" id="ani-61">
+      <h2>Canım Sevgilim</h2>
+      <p>İlk Seminerimde Beni Yalnız Bırakmayan Aşkım</p>
+      <img src="fotograflar/61.jpeg" alt="Anı 61">
+    </section>
+    <section class="memory-card" id="ani-62">
+      <h2>Papatya Güzeli</h2>
+      <p>Umarım Güzel Kokuyordur</p>
+      <img src="fotograflar/62.jpeg" alt="Anı 62">
+    </section>
+    <section class="memory-card" id="ani-63">
+      <h2>Yolcumuzu Karşılama</h2>
+      <p>Çanakkale Yolcumuz İzmir'e İniş Yapmıştır Bolca Öpücük ve Sevgi ile karşılanmalı</p>
+      <img src="fotograflar/63.jpeg" alt="Anı 63">
+    </section>
+  </div>
+</div>
+
+<footer>
+  Sonsuza kadar seninle... ❤️<br><br>
+  <button id="secretBtn" style="padding: 10px 20px; border: none; background-color: pink; font-size: 1em; border-radius: 10px; cursor: pointer;">Bir sürprizim var 💌</button>
+  <div id="secretMessage" style="display:none; margin-top:20px; font-size:1.5em; color:#ff3366;">
+    💖 Seni her geçen gün daha çok seviyorum... Sonsuza dek! 💖
+  </div>
+</footer>
+
+<!-- MP3 Audio Player -->
+<div class="audio-player">
+  <h3>.</h3>
+  <audio controls>
+    <source src="valse.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+<!-- Scrollspy Timeline -->
+<script>
+
+    const bgMusic = document.querySelector('audio');
+
+// Herhangi bir tıklamada müziği başlat
+document.body.addEventListener('click', () => {
+  if (bgMusic.paused) {
+    bgMusic.play().catch(() => {});
+    // Mobil için ekstra güvenlik önlemi
+    document.body.removeEventListener('click', arguments.callee);
+  }
+});
+
+// İlk scroll hareketinde de çalmayı dene
+window.addEventListener('scroll', () => {
+  if (bgMusic.paused) {
+    bgMusic.play().catch(() => {});
+    window.removeEventListener('scroll', arguments.callee);
+  }
+}, { once: true });
+
+
+const sections = document.querySelectorAll('.memory-card');
+const timelineItems = document.querySelectorAll('.timeline li');
+
+function activateTimelineItem() {
+  let index = sections.length;
+  const timeline = document.querySelector('.timeline');
+
+  // Aktif bölümü bul
+  while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
+
+  timelineItems.forEach((item) => item.classList.remove('active'));
+  const activeItem = timelineItems[index];
+  activeItem.classList.add('active');
+
+  // Timeline scroll pozisyonunu aktif maddeye göre ayarla
+  const itemTop = activeItem.offsetTop;
+  const itemHeight = activeItem.offsetHeight;
+  const timelineHeight = timeline.offsetHeight;
+
+  timeline.scrollTo({
+    top: itemTop - (timelineHeight / 2) + (itemHeight / 2),
+    behavior: 'smooth'
+  });
+}
+
+activateTimelineItem();
+window.addEventListener('scroll', () => {
+  activateTimelineItem();
+  showCardsOnScroll();
+});
+
+timelineItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const target = document.getElementById(item.dataset.target);
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+function showCardsOnScroll() {
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= window.innerHeight - 100) {
+      section.classList.add('show');
+    }
+  });
+}
+
+showCardsOnScroll();
+
+const btn = document.getElementById('secretBtn');
+const msg = document.getElementById('secretMessage');
+btn.addEventListener('click', () => {
+  msg.style.display = 'block';
+  btn.style.display = 'none';
+});
+
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.bottom = '0'; // ✨ Alt kısımdan başlat
+    heart.style.background = ['#ffb6c1', '#ff69b4', '#ff1493', '#db7093'][Math.floor(Math.random() * 4)];
+    document.body.appendChild(heart);
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+}
+  
+  setInterval(createHeart, 500);
+
+
+</script>
+
+</body>
+</html>
